@@ -1,0 +1,36 @@
+<h2>User info</h2>
+
+<div class="container-fluid mt-2">
+  <form id="recsys_form">
+    <div class="input-group">
+      <select
+        class="form-control"
+        name="selectedUserId"
+        id="userId"
+        aria-label="Select an user"
+        placeholder="Select a SAKS User"
+        required
+      >
+        <option selected>Select a SAKS User</option>
+        {% for user_id in users %}
+        <option value="{{ user_id }}">{{ user_id }}</option>
+        {% endfor %}
+      </select>
+
+      <select
+        class="form-control"
+        id="numRec"
+        name="numRec"
+        placeholder="Number of Recommendations"
+      >
+        <option selected># of recommendation</option>
+        <option>3</option>
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Ask</button>
+  </form>
+</div>

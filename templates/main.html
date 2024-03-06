@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}SAKS GPT{% endblock %} {% block
+content %}
+
+<div class="container-fluid border border-primary rounded shadow mt-2">
+  <div class="row">
+    <!-- row request form -->
+    {% with users=users %} {% include 'request_form.html' %} {% endwith %}
+  </div>
+
+  <div class="row">
+    <!-- row items -->
+    {% include 'items_list.html' %}
+  </div>
+</div>
+
+<div class="container-fluid border border-primary rounded shadow mt-2">
+  <div class="row">
+    <!-- row preferences -->
+    {% include 'preferences_output.html' %}
+  </div>
+</div>
+
+<div class="container-fluid border border-primary rounded shadow mt-2">
+  <div class="row">
+    <!-- row recommendations -->
+    {% include 'recommendation_output.html' %}
+  </div>
+</div>
+
+{% endblock %}

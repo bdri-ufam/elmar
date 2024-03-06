@@ -1,0 +1,7 @@
+.table-responsive {
+  max-height: 150px;
+}
+
+.btn-primary {
+  --bs-btn-disabled-bg: #adb5bd;
+}
