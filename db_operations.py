@@ -97,7 +97,7 @@ def new_request(user_name,user_token,client_id,
   command = f"INSERT INTO demo_stats (user_name, user_token, \
 client_id, num_rec, model, recsys_prompt, recsys_completion) \
 VALUES ('{user_name}','{user_token}',{client_id},{numRec},\
-'{model}', { Json(recsys_prompt)}, { Json(recsys_completion) })"
+'{model}', { Json(recsys_prompt)}, { Json(recsys_completion.model_dump_json(indent=2)) })"
 
 #  print(command)
 

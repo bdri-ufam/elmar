@@ -1,6 +1,3 @@
-import openai
-import time
-import os
 
 def build_preferences_prompt(user_items):
   
@@ -35,21 +32,30 @@ Answer:'''
     return recsys_prompt
 
 
-def ask_to_gpt(messages,model='gpt-4-turbo-preview', max_tokens=2048,temperature=0,n_retry=5):
-    openai.api_key = os.getenv('OPENAI_API')
- 
+### GPT request
+
+import time
+from openai import OpenAI
+import os
+
+def ask_to_gpt(messages, gpt_model='gpt-4-turbo-preview',max_tokens=2048,temperature=0,n_retry=5):
+
+    client = OpenAI(
+        api_key = os.getenv('OPENAI_API')
+    )
+    
     print("================ OpenAI API call =================")
-    print(" > Model: ", model)
+    print(" > Model: ", gpt_model)
     print(" > temperature: ", temperature)
     print(" > max_tokens: ", max_tokens)
     print("==================== Request =====================")
-    #print(messages)
+    #print(json.dumps(messages, indent=2))
 
     while n_retry:
         try:
             print('Please wait...')
-            response = openai.ChatCompletion.create(
-                  model=model,
+            response = client.chat.completions.create(
+                  model=gpt_model,
                   messages=messages,
                   max_tokens=max_tokens,  # Limitando a interação
                   temperature=temperature,# Grau de liberdade/aleatoriedade [0-2]
@@ -59,10 +65,11 @@ def ask_to_gpt(messages,model='gpt-4-turbo-preview', max_tokens=2048,temperature
                   n = 1,                  # Número máximo de respostas a serem geradas (gerar opções > 1?)
               )
             print("==================== Answer ======================")
-            #print(response['choices'][0]['message']['content']) # Se parâmetro 'n' mudar, haverá mais de uma posição no vetor de respostas (não apenas a 0)
-            #display(Markdown(response['choices'][0]['message']['content']))
+    #        print(response['choices'][0]['message']['content']) # Se parâmetro 'n' mudar, haverá mais de uma posição no vetor de respostas (não apenas a 0)
+    #        display(Markdown(response['choices'][0]['message']['content']))
+            #display(response.choices[0].message.content)
             print("==================== Stats =======================")
-            print(response['usage'])
+            print(dict(response).get('usage'))
             print("==================================================")
             chat_completion = {
                 "prompt": messages,

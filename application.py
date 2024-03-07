@@ -139,7 +139,11 @@ def getPreferences():
   try:
     prefs_completion = ask_to_gpt(prefs_prompt)
 #    prefs_completion = test_preference_completion
-    completion = prefs_completion['completion']['choices'][0]['message']['content']
+#    print(prefs_completion)
+#    completion = prefs_completion['completion']['choices'][0]['message']['content']
+    completion = prefs_completion['completion'].choices[0].message.content
+#    print()
+#    print(completion)
     answer = markdown.markdown(completion)
     
     resp = make_response( jsonify( {"preferences" : answer, 'completion': completion} ) )
@@ -176,7 +180,8 @@ def getRecommendation():
     recsys_completion = ask_to_gpt(recsys_prompt)
 #    recsys_completion = test_recommendation_completion
 #    print(recsys_completion)
-    completion = recsys_completion['completion']['choices'][0]['message']['content']
+#    completion = recsys_completion['completion']['choices'][0]['message']['content']
+    completion = recsys_completion['completion'].choices[0].message.content
     answer = markdown.markdown(completion)
     
     resp = make_response( jsonify( {"recommendation" : answer, 'completion': completion} ) )
