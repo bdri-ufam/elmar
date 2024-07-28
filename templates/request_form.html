@@ -1,4 +1,4 @@
-<h2>User info</h2>
+<h2>Setup</h2>
 
 <div class="container-fluid mt-2">
   <form id="recsys_form">
@@ -7,11 +7,11 @@
         class="form-control"
         name="selectedUserId"
         id="userId"
-        aria-label="Select an user"
-        placeholder="Select a SAKS User"
+        aria-label="Select a client"
+        placeholder="Select your client"
         required
       >
-        <option selected>Select a SAKS User</option>
+        <option selected>Select your Client</option>
         {% for user_id in users %}
         <option value="{{ user_id }}">{{ user_id }}</option>
         {% endfor %}
