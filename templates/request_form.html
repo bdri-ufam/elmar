@@ -1,8 +1,8 @@
 <h2>Setup</h2>
 
-<div class="container-fluid mt-2">
-  <form id="recsys_form">
-    <div class="input-group">
+<div class="container-fluid">
+  <form class="row g-1 mb-1" id="recsys_form">
+    <div class="col">
       <select
         class="form-control"
         name="selectedUserId"
@@ -16,14 +16,16 @@
         <option value="{{ user_id }}">{{ user_id }}</option>
         {% endfor %}
       </select>
+    </div>
 
+    <div class="col-auto">
       <select
         class="form-control"
         id="numRec"
         name="numRec"
         placeholder="Number of Recommendations"
       >
-        <option selected># of recommendation</option>
+        <option selected># items</option>
         <option>3</option>
         <option>5</option>
         <option>10</option>
@@ -31,6 +33,9 @@
         <option>20</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary mt-2">Ask</button>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Ask</button>
+    </div>
+    
   </form>
 </div>
