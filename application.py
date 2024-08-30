@@ -21,8 +21,8 @@ def home():
 @application.route('/login/', methods=['POST'])
 def login():
   try:
-    token = 'demo@recsys24'
-    #token = request.form['token']
+    #token = 'demo@recsys24'
+    token = request.form['token']
     name = request.form['name']
     
     if check_login(token):

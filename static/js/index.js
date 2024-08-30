@@ -34,7 +34,7 @@ function updateFundsTable(funds) {
         <tr>
           <th scope="col">#</th>
           <th scope="col">Available Funds</th>
-          <th scope="col">Applied by the user</th>
+          <th scope="col">Applied by the Client</th>
         </tr>
       </thead>`;
 
