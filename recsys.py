@@ -17,7 +17,10 @@ def build_recommendation_prompt(user_items,candidate_set, preferences_completion
 
     prompt = f'''The available funds (CANDIDATE SET) are: {', '.join(candidate_set)}.
 
-Recommend {n_items} funds from the CANDIDATE SET based on my preferences and similarity with the funds I have (Format: [no. recommended fund name: recommendation reason]).
+Recommend {n_items} funds from the CANDIDATE SET based on my preferences and similarity with the funds I have.
+Format: [position. recommended fund name: recommendation reason] as follow:
+1. Recommended item 1: recommendation reason 1.
+2. Recommended item 2: recommendation reason 2.
 
 Answer:'''
 
